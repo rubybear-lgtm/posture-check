@@ -13,8 +13,11 @@ struct NotificationManager {
     }
 
     func authorizationStatus() async -> PermissionState {
-        let settings = await center.notificationSettings()
-        return PermissionState(status: settings.authorizationStatus)
+        await withCheckedContinuation { continuation in
+            center.getNotificationSettings { settings in
+                continuation.resume(returning: PermissionState(status: settings.authorizationStatus))
+            }
+        }
     }
 
     @discardableResult
@@ -47,10 +50,14 @@ struct NotificationManager {
     }
 
     func removeAllPendingRequests() async {
-        let pending = await center.pendingNotificationRequests()
-        let identifiers = pending
-            .map(\.identifier)
-            .filter { $0.hasPrefix(Self.postureReminderPrefix) || $0 == Self.testNotificationIdentifier }
+        let identifiers: [String] = await withCheckedContinuation { continuation in
+            center.getPendingNotificationRequests { requests in
+                let matches = requests
+                    .map(\.identifier)
+                    .filter { $0.hasPrefix(Self.postureReminderPrefix) || $0 == Self.testNotificationIdentifier }
+                continuation.resume(returning: matches)
+            }
+        }
         center.removePendingNotificationRequests(withIdentifiers: identifiers)
     }
 
