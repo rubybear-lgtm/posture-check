@@ -1,6 +1,6 @@
 (function () {
   const config = {
-    downloadUrl: "https://github.com/rubybear-lgtm/posture-check/releases/latest",
+    downloadUrl: "https://github.com/rubybear-lgtm/posture-check/releases/latest/download/PostureCheck-macOS.zip",
     showDownloadNote: false
   };
 
