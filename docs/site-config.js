@@ -1,7 +1,7 @@
 (function () {
   const config = {
-    downloadUrl: "https://github.com/YOUR_ORG/posture-check/releases/latest/download/PostureCheck.zip",
-    showDownloadNote: true
+    downloadUrl: "https://github.com/rubybear-lgtm/posture-check/releases/latest",
+    showDownloadNote: false
   };
 
   const links = [

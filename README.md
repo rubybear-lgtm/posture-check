@@ -62,6 +62,12 @@ Posture Check is a menu bar macOS app that sends local reminders to check your p
 - Verify notifications, launch-at-login, and the menu bar workflow on a clean macOS account.
 - Capture App Store screenshots and fill in App Privacy in App Store Connect. This app stores settings locally and does not collect user data.
 
+## GitHub Pages
+
+- The static download page lives in [docs/index.html](/Users/ruby/Documents/dev/posture-check/docs/index.html).
+- GitHub Pages deployment is configured in [pages.yml](/Users/ruby/Documents/dev/posture-check/.github/workflows/pages.yml) and publishes the `docs/` folder on pushes to `main`.
+- The public download target is configured in [site-config.js](/Users/ruby/Documents/dev/posture-check/docs/site-config.js). Point it at your signed release asset URL when you have one, or leave it on the latest Releases page.
+
 ## Project structure
 
 - [PostureCheck](/Users/ruby/Documents/dev/posture-check/PostureCheck)
