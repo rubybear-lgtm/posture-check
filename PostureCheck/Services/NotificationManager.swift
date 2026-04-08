@@ -22,10 +22,10 @@ struct NotificationManager {
 
     @discardableResult
     func requestAuthorization() async -> Bool {
-        do {
-            return try await center.requestAuthorization(options: [.alert, .sound, .badge])
-        } catch {
-            return false
+        await withCheckedContinuation { continuation in
+            center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, _ in
+                continuation.resume(returning: granted)
+            }
         }
     }
 
@@ -45,16 +45,18 @@ struct NotificationManager {
                 content: content,
                 trigger: trigger
             )
-            try await center.add(request)
+            try await add(request)
         }
     }
 
     func removeAllPendingRequests() async {
+        let reminderPrefix = Self.postureReminderPrefix
+        let testIdentifier = Self.testNotificationIdentifier
         let identifiers: [String] = await withCheckedContinuation { continuation in
             center.getPendingNotificationRequests { requests in
                 let matches = requests
                     .map(\.identifier)
-                    .filter { $0.hasPrefix(Self.postureReminderPrefix) || $0 == Self.testNotificationIdentifier }
+                    .filter { $0.hasPrefix(reminderPrefix) || $0 == testIdentifier }
                 continuation.resume(returning: matches)
             }
         }
@@ -73,12 +75,24 @@ struct NotificationManager {
             content: content,
             trigger: trigger
         )
-        try await center.add(request)
+        try await add(request)
     }
 
     private func reminderIdentifier(for date: Date) -> String {
         let formatter = ISO8601DateFormatter()
         formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
         return Self.postureReminderPrefix + formatter.string(from: date).replacingOccurrences(of: ":", with: "-")
+    }
+
+    private func add(_ request: UNNotificationRequest) async throws {
+        try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, Error>) in
+            center.add(request) { error in
+                if let error {
+                    continuation.resume(throwing: error)
+                } else {
+                    continuation.resume(returning: ())
+                }
+            }
+        }
     }
 }
