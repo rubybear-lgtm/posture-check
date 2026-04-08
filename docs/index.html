@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Posture Check for macOS</title>
+    <meta
+      name="description"
+      content="Posture Check is a lightweight macOS app that reminds you to sit tall on a schedule you control."
+    >
+    <meta name="theme-color" content="#eef7f1">
+    <meta property="og:title" content="Posture Check for macOS">
+    <meta
+      property="og:description"
+      content="A quiet posture reminder for macOS. No tracking. No analytics. Just a clean reminder when you need it."
+    >
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="./assets/site/app-icon.png">
+    <link rel="icon" type="image/png" href="./assets/site/favicon.png">
+    <link rel="apple-touch-icon" href="./assets/site/apple-touch-icon.png">
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">macOS utility</p>
+          <h1>Posture reminders that stay out of the way.</h1>
+          <p class="hero-text">
+            Posture Check lives quietly on your Mac and reminds you to sit tall on a schedule you control.
+            No camera. No tracking. No noise.
+          </p>
+
+          <div class="hero-actions">
+            <a
+              class="button button-primary"
+              id="download-link"
+              href="https://github.com/YOUR_ORG/posture-check/releases/latest/download/PostureCheck.zip"
+            >
+              Download for macOS
+            </a>
+            <a class="button button-secondary" href="#details">See how it works</a>
+          </div>
+
+          <p class="hero-note" id="download-note">
+            Replace the default download URL in <code>docs/site-config.js</code> before publishing.
+          </p>
+
+          <ul class="hero-points">
+            <li>Runs in the menu bar or quietly without it</li>
+            <li>Only reminds you while your Mac is awake and unlocked</li>
+            <li>Local notifications only, with no analytics or accounts</li>
+          </ul>
+        </div>
+
+        <div class="hero-art" aria-hidden="true">
+          <div class="art-card">
+            <img
+              class="app-icon"
+              src="./assets/site/app-icon.png"
+              alt="Posture Check app icon"
+              width="512"
+              height="512"
+            >
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section class="details" id="details">
+          <div class="section-heading">
+            <p class="eyebrow">What it does</p>
+            <h2>A single-purpose app with one job.</h2>
+          </div>
+
+          <div class="feature-grid">
+            <article class="feature-card">
+              <h3>Set the rhythm</h3>
+              <p>Choose an interval, working hours, and optional weekday-only reminders.</p>
+            </article>
+            <article class="feature-card">
+              <h3>Keep it quiet</h3>
+              <p>Posture Check uses local notifications and avoids the clutter of dashboards, streaks, or coaching flows.</p>
+            </article>
+            <article class="feature-card">
+              <h3>Respect your time</h3>
+              <p>Reminders pause when your Mac is asleep or locked, then resume when you are back.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="specs">
+          <div class="section-heading">
+            <p class="eyebrow">Requirements</p>
+            <h2>Designed for a clean macOS workflow.</h2>
+          </div>
+
+          <div class="spec-grid">
+            <div class="spec-row">
+              <span class="spec-label">Platform</span>
+              <span class="spec-value">macOS 14 or later</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Permissions</span>
+              <span class="spec-value">Notifications</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Data</span>
+              <span class="spec-value">Stored locally on your Mac</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Account</span>
+              <span class="spec-value">None required</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="cta-panel">
+          <div>
+            <p class="eyebrow">Download</p>
+            <h2>Install it and forget about it.</h2>
+            <p>
+              The app launches quickly, asks for notification access, and then stays out of the way until it is time for a posture check.
+            </p>
+          </div>
+          <a
+            class="button button-primary"
+            id="download-link-footer"
+            href="https://github.com/YOUR_ORG/posture-check/releases/latest/download/PostureCheck.zip"
+          >
+            Download Posture Check
+          </a>
+        </section>
+      </main>
+    </div>
+
+    <script src="./site-config.js"></script>
+  </body>
+</html>
