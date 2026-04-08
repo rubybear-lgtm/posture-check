@@ -5,11 +5,14 @@ struct PostureCheckApp: App {
     @StateObject private var appState: AppState
 
     init() {
-        let state = AppState()
+        let runningTests = ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil
+        let state = AppState(isTesting: runningTests)
         _appState = StateObject(wrappedValue: state)
 
-        Task { @MainActor in
-            state.start()
+        if !runningTests {
+            Task { @MainActor in
+                state.start()
+            }
         }
     }
 
