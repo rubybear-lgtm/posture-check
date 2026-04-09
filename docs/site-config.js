@@ -1,7 +1,7 @@
 (function () {
   const config = {
-    downloadUrl: "https://github.com/rubybear-lgtm/posture-check/releases/latest/download/PostureCheck-macOS.zip",
-    showDownloadNote: false
+    downloadUrl: "https://github.com/rubybear-lgtm/posture-check/releases/latest/download/PostureCheck.dmg",
+    showDownloadNote: true
   };
 
   const links = [
